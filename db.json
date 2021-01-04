@@ -1,0 +1,54 @@
+{
+  "users":{
+    "_id": "u101",
+    "fullName": "Orly Amdadi",
+    "userName": "orly@amdadi.com",
+    "password": "tinkerbell",
+    "isAdmin": true,
+    "followers": [
+      {
+        "_id": "u102",
+        "fullName": "lolo popo",
+        "imgUrl": "http://some-img"
+      }
+    ],
+    "imgUrl": "http://some-img"
+  },
+  "station":{
+  "_id": "5c09",
+  "name": "Funky Monks",
+  "tags": ["Funk", "Happy"],
+  "createdBy": {
+    "_id": "u101",
+    "fullName": "Puki Ben David",
+    "imgUrl": "http://some-photo/"
+  },
+  "likedByUsers": [
+    { "_id": "u101", "fullName": "Orly Amdadi", "imgUrl": "http://some-img" },
+    {
+      "_id": "u102",
+      "fullName": "lolo popo",
+      "imgUrl": "http://some-img"
+    }
+  ],
+  "songs": [
+    {
+      "title": "The Meters - Cissy Strut",
+      "id": "s1001",
+      "imgUrl": "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
+      "addedBy": {
+        "_id": "u101",
+        "fullName": "Orly Amdadi",
+        "imgUrl": "http://some-img"
+      }
+    },
+    {
+      "title": "The JB's - Pass The Peas",
+      "id": "mUkfiLjooxs",
+      "imgUrl": "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
+      "addedBy": {}
+    }
+  ]
+}
+
+}
