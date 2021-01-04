@@ -1,8 +1,8 @@
 import { stationService } from "../../services/stationService";
 
-export function loadStations() {
+export function loadStations(filterBy) {
     return async (dispatch) => {
-        const stations = await stationService.getStations()
+        const stations = await stationService.query(filterBy)
         dispatch({type:"SET_STATIONS", stations})
     }
 }
