@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import VideoPreview from "../../cmps/VideoPreview/VideoPreview";
 import { getStationById } from "../../store/actions/stationActions";
 
 import "./StationDetails.scss";
 
 const StationDetails = (props) => {
-    const [station, setStation] = useState(null);
+    // const [playlist, setPlaylist] = useState([])
+    const [songIdx, setSongIdx] = useState(0);
 
     useEffect(() => {
-        console.log("station details");
         const stationId = props.match.params.id;
-        async function currStation() {
-            await props.getStationById(stationId);
-            setStation(props.station);
-        }
-        currStation();
-        return setStation(null);
+        currStation(stationId);
     }, []);
+
+    async function currStation(id) {
+        await props.getStationById(id);
+        // setPlaylist(props.station.songs)
+    }
 
     return (
         <section>
             <h2>Station Details</h2>
-            {station && (
-                <iframe
-                    src={`https://www.youtube.com/embed/${station.songs[0].youtubeId}?autoplay=1`}
-                    allow="autoplay"
-                ></iframe>
+            {props.station && (
+                <VideoPreview videoId={props.station.songs[songIdx]} />
             )}
         </section>
     );
