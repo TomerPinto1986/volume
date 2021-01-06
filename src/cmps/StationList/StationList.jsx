@@ -7,11 +7,10 @@ const StationList = (props) => {
     // const handleClick = (id) => {
     //     console.log("station ID", id);
     // };
-
     return (
         <section>
             <h2>Station List</h2>
-            <ul className="flex">
+            <ul className="station-list clean-list">
                 {props.stations.map((station) => {
                     return (
                         <StationPreview

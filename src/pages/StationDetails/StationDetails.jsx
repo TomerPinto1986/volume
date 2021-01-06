@@ -14,6 +14,10 @@ const StationDetails = (props) => {
         currStation(stationId);
     }, []);
 
+    async function currStation(stationId) {
+        await props.getStationById(stationId);
+    }
+
     async function currStation(id) {
         await props.getStationById(id);
         // setPlaylist(props.station.songs)
