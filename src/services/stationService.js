@@ -1,19 +1,28 @@
 import { httpService } from "./httpService"
 import axios from 'axios';
 
-export const stationService = {
+export const  stationService = {
     query,
-    videoSearch
-    // getById,
+    videoSearch,
+    getStationById,
     // save,
     // remove,
 };
 
-function query(filterBy) {
+function query() {
     try{
-        const videos = videoSearch(filterBy)
-        return videos;
+        const stations = httpService.get('station')
+        return stations;
     } catch (err) {
+        throw err
+    }
+}
+
+async function getStationById(id) {
+    try{
+        const station =httpService.get(`station/${id}`)
+        return station;
+    } catch(err){
         throw err
     }
 }
