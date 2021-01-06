@@ -1,4 +1,6 @@
 .station-preview {
-    width: 200px;
-    margin: 10px;
+    
+    img {
+        object-fit: cover;
+    }
 }

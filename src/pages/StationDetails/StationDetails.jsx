@@ -5,25 +5,26 @@ import { getStationById } from "../../store/actions/stationActions";
 import "./StationDetails.scss";
 
 const StationDetails = (props) => {
-    const [station, setStation] = useState(null);
 
     useEffect(() => {
         console.log("station details");
         const stationId = props.match.params.id;
-        async function currStation() {
-            await props.getStationById(stationId);
-            setStation(props.station);
-        }
-        currStation();
-        return setStation(null);
+        console.log('id?:',stationId);
+        currStation(stationId);
+       
     }, []);
+    
+
+    async function currStation(stationId) {
+        await props.getStationById(stationId);
+    }
 
     return (
         <section>
             <h2>Station Details</h2>
-            {station && (
+            {props.station && (
                 <iframe
-                    src={`https://www.youtube.com/embed/${station.songs[0].youtubeId}?autoplay=1`}
+                    src={`https://www.youtube.com/embed/${props.station.songs[0].youtubeId}?autoplay=1`}
                     allow="autoplay"
                 ></iframe>
             )}

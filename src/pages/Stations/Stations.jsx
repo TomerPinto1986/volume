@@ -7,7 +7,6 @@ import { loadStations } from "../../store/actions/stationActions";
 import StationList from "../../cmps/StationList";
 
 const Stations = (props) => {
-    const [stations, setStations] = useState(null);
     const [filterBy, setFilterBy] = useState(null);
 
     useEffect(() => {
@@ -18,7 +17,6 @@ const Stations = (props) => {
     async function loadStations() {
         //load stations from DB
         await props.loadStations();
-        setStations(props.stations);
         //update state
     }
 
@@ -29,15 +27,15 @@ const Stations = (props) => {
     };
 
     return (
-        <div>
+        <div className="stations-container">
             {/* <VideoFilter/> */}
             <h2>Stations</h2>
-            {stations && (
+            {props.stations && (
                 <StationList
-                    selectStation={selectStation}
-                    stations={stations}
+                selectStation={selectStation}
+                stations={props.stations}
                 />
-            )}
+                )}
         </div>
     );
 };

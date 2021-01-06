@@ -10,8 +10,10 @@ export function loadStations(filterBy) {
 }
 
 export function getStationById(id){
+    console.log("id in action:",id)
     return async (dispatch) => {
         const station = await stationService.getStationById(id)
+        console.log('station in action:',station)
         dispatch({type:"SET_STATION",station})
         return station
     }
