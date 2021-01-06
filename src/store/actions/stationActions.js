@@ -1,7 +1,6 @@
 import { stationService } from "../../services/stationService";
 
 export function loadStations(filterBy) {
-    console.log('loading stations');
     return async (dispatch) => {
         const stations = await stationService.query(filterBy)
         dispatch({type:"SET_STATIONS", stations})
@@ -10,10 +9,8 @@ export function loadStations(filterBy) {
 }
 
 export function getStationById(id){
-    console.log("id in action:",id)
     return async (dispatch) => {
         const station = await stationService.getStationById(id)
-        console.log('station in action:',station)
         dispatch({type:"SET_STATION",station})
         return station
     }

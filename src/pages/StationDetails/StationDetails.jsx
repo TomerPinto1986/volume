@@ -1,33 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import SongList from "../../cmps/SongList/SongList";
 import VideoPreview from "../../cmps/VideoPreview/VideoPreview";
 import { getStationById } from "../../store/actions/stationActions";
 
 import "./StationDetails.scss";
 
 const StationDetails = (props) => {
-    // const [playlist, setPlaylist] = useState([])
     const [songIdx, setSongIdx] = useState(0);
+    const [currList, setCurrList] = useState([]);
 
     useEffect(() => {
         const stationId = props.match.params.id;
         currStation(stationId);
     }, []);
 
-    async function currStation(stationId) {
-        await props.getStationById(stationId);
+    async function currStation(id) {
+        const station = await props.getStationById(id);
+        setCurrList(station.songs.slice(1));
     }
 
-    async function currStation(id) {
-        await props.getStationById(id);
-        // setPlaylist(props.station.songs)
+    function endSongHandle() {
+        setSongIdx(songIdx + 1);
+        setCurrList((prevState) => prevState.slice(songIdx + 1));
     }
 
     return (
         <section>
             <h2>Station Details</h2>
-            {props.station && (
-                <VideoPreview videoId={props.station.songs[songIdx]} />
+            {props.station && currList.length && (
+                <>
+                    <VideoPreview
+                        endSongHandle={endSongHandle}
+                        videoId={props.station.songs[songIdx].youtubeId}
+                    />
+                    <SongList playlist={currList} />
+                </>
             )}
         </section>
     );

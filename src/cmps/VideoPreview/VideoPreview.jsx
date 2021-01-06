@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import ReactPlayer from "react-player";
 
 import "./VideoPreview.scss";
 
-const VideoPreview = ({ videoId }) => {
+const VideoPreview = ({ videoId, endSongHandle }) => {
     return (
-        <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            allow="autoplay"
-        ></iframe>
+        <ReactPlayer
+            onEnded={endSongHandle}
+            url={`https://www.youtube.com/embed/${videoId}`}
+            playing={true}
+        ></ReactPlayer>
     );
 };
 

@@ -12,7 +12,6 @@ const Stations = (props) => {
     useEffect(() => {
         loadStations(filterBy);
     }, []);
-    console.log("props", props);
 
     async function loadStations() {
         //load stations from DB
@@ -21,8 +20,6 @@ const Stations = (props) => {
     }
 
     const selectStation = (id) => {
-        console.log(id, "selcted station id");
-        console.log(props, "PROPS");
         props.history.push(`/station/${id}`);
     };
 
@@ -32,10 +29,10 @@ const Stations = (props) => {
             <h2>Stations</h2>
             {props.stations && (
                 <StationList
-                selectStation={selectStation}
-                stations={props.stations}
+                    selectStation={selectStation}
+                    stations={props.stations}
                 />
-                )}
+            )}
         </div>
     );
 };
